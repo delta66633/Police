@@ -1,39 +1,41 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>훈련 시나리오 PPT (HTML 버전)</title>
+    <title>광주 경찰특공대 훈련 시나리오 - Modern Design</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <!-- Custom Tailwind Config (for dark theme colors) -->
+    <!-- Google Fonts (Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+    <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary': {
-                            'light': '#60a5fa', // Lighter Blue
-                            'DEFAULT': '#2563eb', // Standard Blue
-                            'dark': '#1e40af'   // Darker Blue
-                        },
-                        'secondary': '#374151', // Dark Gray
-                        'accent': '#f87171', // Lighter Red
-                        'safe': '#4ade80', // Lighter Green
-                        'background': '#111827', // Very Dark Gray
-                        'surface': '#1f2937', // Dark Gray for slides
-                        'text-primary': '#e5e7eb', // Light Gray
-                        'text-secondary': '#9ca3af', // Medium Gray
-                        'border-color': '#4b5563', // Gray
+                        'brand-dark': '#121212', // Main dark background
+                        'brand-surface': '#1e1e1e', // Slightly lighter surface
+                        'brand-primary': '#F03A47', // Vibrant Red Accent (like example)
+                        'brand-primary-dark': '#D02A37',
+                        'brand-secondary': '#4b5563', // Muted gray
+                        'brand-text-light': '#f3f4f6', // Light text
+                        'brand-text-medium': '#9ca3af', // Medium gray text
+                        'brand-text-dark': '#6b7280', // Darker gray text
+                        'brand-safe': '#22c55e', // Green for safety
+                        'brand-safe-bg': 'rgba(34, 197, 94, 0.1)',
+                        'brand-warning': '#facc15', // Yellow
+                        'brand-warning-bg': 'rgba(250, 204, 21, 0.1)',
+                        'brand-danger': '#F03A47', // Use primary red for danger/stop
+                        'brand-danger-bg': 'rgba(240, 58, 71, 0.1)',
                     },
                     fontFamily: {
-                        'sans': ['Noto Sans KR', 'sans-serif'],
+                        'sans': ['Poppins', 'sans-serif'],
                     },
-                    height: {
-                        'slide': 'calc(100vh - 4rem)', // Example: Adjust based on desired slide height and padding/margins
-                    }
                 },
             },
         }
@@ -42,971 +44,467 @@
         body {
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            background-color: #121212; /* brand-dark */
+            color: #f3f4f6; /* brand-text-light */
         }
-        /* Optional: Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold mb-4 text-brand-text-light relative pb-3;
         }
-        /* Basic slide styling for visual separation */
-        .slide {
-            min-height: 80vh; /* Ensure slides take up significant viewport height */
-            /* Consider adding padding, margin, border, background here */
-            /* Example: border-t border-border-color pt-8 */
+        .section-title::after {
+            content: '';
+            @apply absolute bottom-0 left-0 h-1 w-16 bg-brand-primary rounded;
         }
-        /* Style for inline SVGs */
-        .icon {
-            display: inline-block;
-            width: 1.3em;
-            height: 1.3em;
-            margin-right: 0.4em;
-            vertical-align: -0.25em; /* Adjust vertical alignment */
+        .sub-heading {
+            @apply text-xl font-semibold text-brand-text-light mb-3;
         }
-         /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1f2937; }
-        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+        .card {
+             @apply bg-brand-surface p-6 rounded-lg shadow-lg border border-gray-700/50 transition duration-300 hover:shadow-xl hover:border-brand-primary/50;
+        }
+        .cta-button {
+            @apply inline-block bg-brand-primary text-white font-semibold px-8 py-3 rounded-md text-lg transition duration-300 ease-in-out hover:bg-brand-primary-dark transform hover:-translate-y-1 shadow-lg hover:shadow-xl;
+        }
+        .icon-list li {
+             @apply flex items-start mb-3;
+        }
+        .icon-list svg {
+             @apply w-6 h-6 mr-3 text-brand-primary flex-shrink-0 mt-1;
+        }
+         /* Custom scrollbar for a modern feel */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1e1e1e; }
+        ::-webkit-scrollbar-thumb { background: #F03A47; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D02A37; }
+
+        /* Simple gradient background pattern (optional) */
+        .gradient-bg {
+             background: linear-gradient(135deg, rgba(18, 18, 18, 0.95) 0%, rgba(30, 30, 30, 0.98) 100%), url('https://via.placeholder.com/1920x1080/cccccc/121212?text=Abstract+Background+Pattern') center center/cover no-repeat fixed;
+        }
+
+         /* Hero Section Background */
+         #hero {
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('https://via.placeholder.com/1920x1080/444444/FFFFFF?text=Training+Scenario+Background') center center/cover no-repeat;
+            min-height: 90vh; /* Adjust as needed */
+         }
+
+         /* Sticky Nav Placeholder Style */
+         #main-nav {
+             /* Add styles for your sticky nav here */
+             /* Example: background-color: rgba(18, 18, 18, 0.8); backdrop-filter: blur(10px); */
+         }
+
     </style>
 </head>
-<body class="bg-background text-text-primary font-sans leading-relaxed">
+<body class="font-sans leading-relaxed">
 
-<div class="container max-w-6xl mx-auto px-4 py-8">
+<!-- Sticky Navigation Placeholder -->
+<nav id="main-nav" class="sticky top-0 z-50 w-full py-4 px-6 bg-brand-dark/80 backdrop-blur-md shadow-md hidden md:block">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#hero" class="text-2xl font-bold text-brand-primary">훈련 시나리오</a>
+        <div>
+            <a href="#slide-2" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">개요</a>
+            <a href="#slide-5" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">준비</a>
+            <a href="#slide-8" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">요소</a>
+            <a href="#slide-10" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">역할</a>
+            <a href="#slide-19" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">안전</a>
+            <a href="#slide-27" class="text-brand-text-medium hover:text-brand-text-light pl-4 transition duration-300">Q&A</a>
+        </div>
+    </div>
+</nav>
 
-    <!-- === Slide 1: Title === -->
-    <section id="slide-1" class="slide flex flex-col items-center justify-center text-center min-h-screen bg-gradient-to-br from-surface to-background rounded-xl shadow-2xl p-10 mb-12 border border-border-color">
-        <div class="mb-6">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 text-primary-light mx-auto">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-             </svg>
+<div class="container max-w-7xl mx-auto px-4 py-8">
+
+    <!-- === Slide 1: Hero Section === -->
+    <section id="hero" class="flex flex-col items-center justify-center text-center rounded-xl shadow-2xl p-10 mb-16 relative overflow-hidden">
+        <div class="z-10 relative">
+             <div data-aos="fade-down" data-aos-delay="100" class="mb-6">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 text-brand-primary mx-auto">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                 </svg>
+            </div>
+            <h1 data-aos="fade-up" class="text-4xl md:text-6xl font-extrabold text-white mb-4 leading-tight">훈련 시나리오 & 운영 지침</h1>
+            <h2 data-aos="fade-up" data-aos-delay="100" class="text-2xl md:text-3xl font-semibold text-brand-text-medium mb-8">공공기관 무단 점거 및 진압 훈련</h2>
+            <p data-aos="fade-up" data-aos-delay="200" class="text-lg text-brand-text-medium mb-2">대상: 광주 경찰특공대 및 훈련 관계자</p>
+            <p data-aos="fade-up" data-aos-delay="250" class="text-md text-brand-text-dark mb-10">날짜: 2025-XX-XX</p>
+            <div data-aos="fade-up" data-aos-delay="300">
+                 <a href="#slide-2" class="cta-button">
+                     훈련 개요 보기
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 inline-block ml-2">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                     </svg>
+                 </a>
+            </div>
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-primary-light mb-4">훈련 시나리오 및 OPFOR/White Cell 운영 지침</h1>
-        <h2 class="text-2xl md:text-3xl font-semibold text-slate-200 mb-8">공공기관 무단 점거 및 진압 훈련</h2>
-        <p class="text-lg text-text-secondary">대상: 광주 경찰특공대 및 훈련 관계자</p>
-        <p class="text-md text-text-secondary">날짜: 2025-XX-XX</p>
-        <p class="text-sm text-border-color mt-4">버전: 1.0 (HTML-PPT)</p>
-        <div class="mt-12 text-primary-light animate-bounce">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8">
-               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-             </svg>
-        </div>
+         <!-- Optional subtle overlay pattern -->
+         <div class="absolute inset-0 bg-black opacity-20"></div>
     </section>
 
     <!-- === Slide 2: Overview === -->
-    <section id="slide-2" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+    <section id="slide-2" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
+        <h2 class="section-title flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
             </svg>
             훈련 개요
         </h2>
-        <div class="space-y-5 text-lg">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">훈련 명칭</h3>
-                <p class="text-text-secondary ml-4">광주 선거관리위원회 무단 침입 및 점거 대응 시뮬레이션</p>
+        <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="sub-heading">훈련 명칭</h3>
+                <p class="text-brand-text-medium ml-4">광주 선거관리위원회 무단 침입 및 점거 대응 시뮬레이션</p>
             </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">훈련 목적</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>공공기관 무단 점거 시 <strong class="text-slate-300">질서 회복 및 인명 보호</strong></li>
-                    <li>비무장/제한적 무기 상황 <strong class="text-slate-300">단계적 대응 능력</strong> 향상</li>
-                    <li>고립된 <strong class="text-slate-300">민간인/주요 인물 안전 구출</strong> 역량 강화</li>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="sub-heading">훈련 목적</h3>
+                <ul class="list-disc list-inside ml-4 space-y-2 text-brand-text-medium marker:text-brand-primary">
+                    <li>질서 회복 및 인명 보호</li>
+                    <li>단계적 대응 능력 향상</li>
+                    <li>안전 구출 역량 강화</li>
                 </ul>
             </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">훈련 장소 및 인원</h3>
-                 <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li><strong class="text-slate-300">장소:</strong> 전남 장성군 (광주 선관위 본관 가상 설정)</li>
-                    <li><strong class="text-slate-300">인원:</strong> 경찰특공대 8명, 모의 역할자 11명, 통제관 2명</li>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <h3 class="sub-heading">장소 및 인원</h3>
+                 <ul class="list-disc list-inside ml-4 space-y-2 text-brand-text-medium marker:text-brand-primary">
+                    <li><strong class="text-brand-text-light">장소:</strong> 전남 장성군 (가상)</li>
+                    <li><strong class="text-brand-text-light">인원:</strong> 특공대 8, 역할자 11, 통제관 2</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- === Slide 3: Background Info 1 === -->
-    <section id="slide-3" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
-             </svg>
-            배경 정보 (상황 설정 1/2)
-        </h2>
-        <h3 class="text-xl font-semibold text-slate-200 mb-3">참고 첩보 및 사건 (가상)</h3>
-        <ul class="list-disc list-inside space-y-2 text-text-secondary">
-            <li><span class="timestamp font-semibold text-primary-light mr-1">2025-04-16:</span> 선관위 주변 미상 거수자, 내부 촬영 확인</li>
-            <li><span class="timestamp font-semibold text-primary-light mr-1">2025-04-19:</span> 방산업체 직원, 총기/폭발물 무단 반출 의심 신고</li>
-            <li><span class="timestamp font-semibold text-primary-light mr-1">2025-04-20:</span> 해당 직원 조사 및 긴급 체포</li>
-            <li><span class="timestamp font-semibold text-primary-light mr-1">2025-04-20:</span> 개금산 인근 <em class="text-accent not-italic">폭발 소리</em> 신고 (대동고 학생)</li>
-            <li><span class="timestamp font-semibold text-primary-light mr-1">2025-04-23:</span> 화방산 인근 <em class="text-accent not-italic">총성 의심</em> 신고 (송원대 학생)</li>
-            <li class="!mt-4 bg-secondary/30 p-3 rounded-md border-l-4 border-accent">
-                <span class="timestamp font-semibold text-primary-light mr-1">2025-04-25:</span>
-                <ul class="list-circle list-inside ml-6 mt-1 text-sm space-y-1">
-                    <li>시위대 3명, 선관위 무단 진입 및 장악 신고</li>
-                    <li>경관 1명 건물 내 고립</li>
-                    <li class="text-red-300 font-medium">주동자 SNS: <strong class="bg-red-900/50 px-1 py-0.5 rounded">사제 부비트랩 설치 영상</strong> 공개 확인!</li>
-                </ul>
-            </li>
-        </ul>
+    <!-- === Slide 3 & 4: Background Info (Combined/Styled) === -->
+    <section id="slide-3-4" class="gradient-bg rounded-xl shadow-xl p-8 md:p-12 mb-16 relative overflow-hidden" data-aos="fade-up">
+         <div class="absolute inset-0 bg-brand-dark opacity-80 backdrop-blur-sm"></div>
+         <div class="relative z-10">
+            <h2 class="section-title flex items-center mb-10">
+                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                 </svg>
+                상황 설정 및 배경 정보
+            </h2>
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div data-aos="fade-right" data-aos-delay="100">
+                    <h3 class="sub-heading">참고 첩보 (가상 타임라인)</h3>
+                    <ul class="space-y-3 text-brand-text-medium icon-list">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                            <span><span class="font-semibold text-brand-primary mr-1">04-16:</span> 선관위 주변 미상 거수자 확인</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                            <span><span class="font-semibold text-brand-primary mr-1">04-19:</span> 총기/폭발물 무단 반출 의심 신고</span>
+                        </li>
+                         <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                            <span><span class="font-semibold text-brand-primary mr-1">04-20/23:</span> <strong class="text-brand-danger">폭발 소리/총성 의심</strong> 신고</span>
+                        </li>
+                        <li class="!mt-4 bg-brand-danger-bg p-4 rounded-md border-l-4 border-brand-danger">
+                             <div class="flex items-start">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-brand-danger flex-shrink-0 mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
+                                 <div>
+                                    <span class="font-semibold text-brand-primary mr-1">04-25 (사건 발생):</span>
+                                    <ul class="list-disc list-inside ml-6 mt-1 text-sm space-y-1 text-brand-text-medium">
+                                        <li>시위대 3명, 선관위 무단 진입 및 장악</li>
+                                        <li>경관 1명 고립 / <strong class="text-brand-danger font-semibold">SNS 부비트랩 영상 공개!</strong></li>
+                                    </ul>
+                                 </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div data-aos="fade-left" data-aos-delay="200">
+                     <h3 class="sub-heading">상황 전개 (Phases)</h3>
+                     <div class="space-y-4">
+                        <div class="p-4 border border-brand-secondary rounded-lg bg-brand-surface/50">
+                             <h4 class="font-semibold text-brand-text-light mb-1">Phase 1: 초기 상황 (09:12)</h4>
+                             <p class="text-sm text-brand-text-medium">평화 시위 → 급진파 선동 → 울타리 침입</p>
+                             <p class="text-sm text-purple-400 mt-1"><strong class="bg-purple-900/50 px-1 rounded">[미디어]</strong> 유튜버/기자 현장 존재</p>
+                        </div>
+                        <div class="p-4 border border-brand-secondary rounded-lg bg-brand-surface/50">
+                             <h4 class="font-semibold text-brand-text-light mb-1">Phase 2: 중간 상황 (점거)</h4>
+                             <p class="text-sm text-brand-text-medium">시위대 8~10명 건물 점거, 직원/경찰 6명 고립. SNS 생중계.</p>
+                             <p class="text-sm text-brand-danger mt-1"><strong class="bg-brand-danger/30 px-1 rounded">[무장]</strong> 둔기, 화염병</p>
+                        </div>
+                        <div class="p-4 border border-brand-primary rounded-lg bg-brand-primary/10">
+                             <h4 class="font-semibold text-brand-primary mb-1">Phase 3: 결정적 상황 (투입)</h4>
+                             <p class="text-sm text-brand-text-light">협상 실패 → <strong class="text-white">경찰특공대 투입 지시</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- === Slide 4: Background Info 2 === -->
-    <section id="slide-4" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A11.978 11.978 0 0 1 12 16.5c-3.162 0-6.036-1.263-8.184-3.326m16.368 0A8.959 8.959 0 0 1 12 15c0 .778.099 1.533.284 2.253m0 0a8.997 8.997 0 0 1-7.843 4.582M12 21a8.997 8.997 0 0 0 7.843-4.582M12 3v9m0 9H3m9-9H3" />
-             </svg>
-            초기 및 중간 상황 (상황 설정 2/2)
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-3">초기 상황 (Phase 1)</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li><strong class="text-slate-300">일시:</strong> 2025-03-14 09:12 (가상)</li>
-                    <li>선관위 앞 평화 시위(50명) 중 급진파 선동</li>
-                    <li>울타리 무단 침입 시도 및 성공</li>
-                    <li class="text-purple-300">현장에 <strong class="bg-purple-900/50 px-1 py-0.5 rounded">유튜버/기자</strong> 존재 (생중계/취재)</li>
-                </ul>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-3">중간 상황 (Phase 2)</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li>시위대 8~10명, 선관위 1-2층 점거</li>
-                    <li>직원/방문자 5명 + 경찰관 1명 <strong class="text-slate-300">건물 내 고립</strong></li>
-                    <li>주동자 SNS 생중계로 상황 전파</li>
-                    <li><strong class="text-slate-300">시위대 무장:</strong> 비무장, 둔기(목봉, 파이프), <em class="text-accent not-italic">화염병</em></li>
-                </ul>
-            </div>
-        </div>
-         <div class="mt-8 pt-4 border-t border-border-color/50">
-            <h3 class="text-xl font-semibold text-slate-200 mb-3">결정적 상황 (Phase 3)</h3>
-            <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                 <li>협상팀 대화 시도 <strong class="text-accent">실패</strong></li>
-                 <li class="text-lg font-medium text-primary-light">경찰특공대 투입 지시</li>
-             </ul>
-        </div>
-    </section>
+    <!-- ... (Continue converting other sections using similar principles) ... -->
 
     <!-- === Slide 5: Prep === -->
-    <section id="slide-5" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+    <section id="slide-5" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
+        <h2 class="section-title flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
              </svg>
-            훈련 진행 계획 (사전 준비 D-1)
+            훈련 사전 준비 (D-1)
         </h2>
-        <div class="space-y-6 text-lg">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2 flex items-center">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-primary-light">
-                       <path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.026.222-.01.445.048.662a1.78 1.78 0 0 1-.62.872A4.496 4.496 0 0 1 1.49 15.326ZM18.51 15.326a4.496 4.496 0 0 0-2.405-1.78 1.78 1.78 0 0 0-.62-.872.99.99 0 0 0 .048-.662 6.484 6.484 0 0 1-1.905-3.96 3 3 0 0 0 4.308 3.516.78.78 0 0 0-.358.442ZM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" />
-                     </svg>
+        <div class="grid md:grid-cols-3 gap-8 mt-10">
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                 <h3 class="sub-heading flex items-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.026.222-.01.445.048.662a1.78 1.78 0 0 1-.62.872A4.496 4.496 0 0 1 1.49 15.326ZM18.51 15.326a4.496 4.496 0 0 0-2.405-1.78 1.78 1.78 0 0 0-.62-.872.99.99 0 0 0 .048-.662 6.484 6.484 0 0 1-1.905-3.96 3 3 0 0 0 4.308 3.516.78.78 0 0 0-.358.442ZM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" /></svg>
                     참가자 브리핑
                 </h3>
-                <ul class="list-disc list-inside ml-8 space-y-1 text-text-secondary">
-                    <li>상황 설명 및 시나리오 공유</li>
-                    <li>역할 분담 (BLUE FORCE, OPFOR, White Cell 등)</li>
-                    <li class="font-medium text-red-300">안전 수칙 및 비상 대응 절차 교육 (<strong class="text-accent">STOP CALL, SAFETY</strong> 등)</li>
+                <ul class="list-disc list-inside ml-8 mt-4 space-y-2 text-brand-text-medium marker:text-brand-primary">
+                    <li>상황 및 시나리오 공유</li>
+                    <li>역할 분담 (BLUE/OPFOR/White)</li>
+                    <li class="font-medium text-brand-danger"><strong class="text-red-400">안전 수칙 및 비상 절차</strong> 교육</li>
                 </ul>
             </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2 flex items-center">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-primary-light">
-                       <path fill-rule="evenodd" d="M11.49 3.17a.75.75 0 0 1 1.02 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06l4.22-4.22H4.75a.75.75 0 0 1 0-1.5h11.94l-4.22-4.22a.75.75 0 0 1-.04-1.02ZM2.75 6.75a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd" />
-                     </svg>
+             <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                 <h3 class="sub-heading flex items-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path fill-rule="evenodd" d="M11.49 3.17a.75.75 0 0 1 1.02 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06l4.22-4.22H4.75a.75.75 0 0 1 0-1.5h11.94l-4.22-4.22a.75.75 0 0 1-.04-1.02ZM2.75 6.75a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd" /></svg>
                     환경 구축
                 </h3>
-                <ul class="list-disc list-inside ml-8 space-y-1 text-text-secondary">
-                    <li>모의 장비 지급 (보호구, 비살상 모의 무기 등)</li>
-                    <li>훈련 장소 환경 조성 (바리케이드, 모의 폭발물 등)</li>
+                 <ul class="list-disc list-inside ml-8 mt-4 space-y-2 text-brand-text-medium marker:text-brand-primary">
+                    <li>모의 장비 지급 (보호구 등)</li>
+                    <li>훈련 장소 조성 (바리케이드 등)</li>
                 </ul>
             </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2 flex items-center">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-primary-light">
-                        <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" />
-                     </svg>
+            <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                 <h3 class="sub-heading flex items-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" /></svg>
                     응급 대응 준비
                 </h3>
-                <ul class="list-disc list-inside ml-8 space-y-1 text-text-secondary">
-                    <li>의료팀 및 구급 키트 준비 완료</li>
+                 <ul class="list-disc list-inside ml-8 mt-4 space-y-2 text-brand-text-medium marker:text-brand-primary">
+                    <li>의료팀 및 구급 키트 준비</li>
                     <li>비상 연락망 최종 확인</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- === Slide 6: Timeline 1 === -->
-    <section id="slide-6" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+    <!-- === Slide 6 & 7: Timeline (Simplified visual) === -->
+    <section id="slide-6-7" class="rounded-xl p-8 md:p-12 mb-16" data-aos="fade-up">
+        <h2 class="section-title flex items-center mb-10">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
              </svg>
-            훈련 진행 계획 (D-Day 타임라인 1/2)
+            훈련 진행 타임라인 (D-Day)
         </h2>
-        <div class="space-y-6">
-            <div class="bg-secondary/30 p-4 rounded-lg border-l-4 border-primary">
-                <h3 class="text-xl font-semibold text-primary-light mb-2">12:00 ~ 13:00 : 상황 전파 및 초기 대응</h3>
-                <ul class="list-decimal list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>평화 시위 → 무단 침입 시도 → 상황 악화</li>
-                    <li>선관위 긴급 대피 방송, 초기 경찰 대응 (실패/고립 발생 가정)</li>
-                </ul>
+        <div class="relative border-l-4 border-brand-primary/50 pl-8 space-y-10">
+            <!-- Timeline Item 1 -->
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -left-[50px] top-0 w-8 h-8 bg-brand-primary rounded-full border-4 border-brand-surface flex items-center justify-center text-white font-bold">1</div>
+                <div class="bg-brand-surface p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-brand-primary mb-2">12:00 ~ 13:00 : 상황 전파 및 초기 대응</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-brand-text-medium marker:text-brand-primary/70">
+                        <li>평화 시위 → 무단 침입 시도 → 상황 악화</li>
+                        <li>초기 경찰 대응 실패 / 고립 발생 가정</li>
+                    </ul>
+                </div>
             </div>
-             <div class="bg-secondary/30 p-4 rounded-lg border-l-4 border-primary">
-                <h3 class="text-xl font-semibold text-primary-light mb-2">13:00 ~ 13:30 : 선관위 점거와 대치</h3>
-                <ul class="list-decimal list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>점거 인원(3~5명), 고립 인원(10명) 규모 파악</li>
-                    <li>협상팀 투입, 요구사항 확인 (→ 실패)</li>
-                    <li>특공대 외곽 대기 및 진입 준비</li>
-                    <li class="font-medium text-purple-300">
-                        <span class="bg-purple-900/50 px-1 py-0.5 rounded">[미디어 변수]</span> 유튜버/기자, 현장 촬영 및 실시간 게시 (여론 형성 시작)
-                    </li>
-                </ul>
+            <!-- Timeline Item 2 -->
+            <div class="relative" data-aos="fade-left">
+                <div class="absolute -left-[50px] top-0 w-8 h-8 bg-brand-primary rounded-full border-4 border-brand-surface flex items-center justify-center text-white font-bold">2</div>
+                 <div class="bg-brand-surface p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-brand-primary mb-2">13:00 ~ 13:30 : 선관위 점거와 대치</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-brand-text-medium marker:text-brand-primary/70">
+                        <li>점거/고립 인원 규모 파악</li>
+                        <li>협상팀 투입 시도 (→ 실패)</li>
+                        <li>특공대 외곽 대기 및 진입 준비</li>
+                        <li class="font-medium text-purple-400"><span class="bg-purple-900/50 px-1 rounded">[미디어]</span> 유튜버/기자, 실시간 게시 (여론)</li>
+                    </ul>
+                 </div>
             </div>
-        </div>
-         <p class="text-sm text-center mt-8 text-text-secondary italic">→ 다음 슬라이드에서 계속</p>
-    </section>
-
-    <!-- === Slide 7: Timeline 2 === -->
-    <section id="slide-7" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.566-.666-1.658-.666-2.224 0l-4.234 4.982a.75.75 0 0 0 .624 1.182h8.468a.75.75 0 0 0 .624-1.182l-4.234-4.982Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 5.34-4.04 9.75-9 9.75s-9-4.41-9-9.75" />
-            </svg>
-             훈련 진행 계획 (D-Day 타임라인 2/2)
-        </h2>
-        <div class="space-y-6">
-            <div class="bg-secondary/30 p-4 rounded-lg border-l-4 border-primary">
-                <h3 class="text-xl font-semibold text-primary-light mb-2">13:30 ~ 15:30 : 특공대 진압 작전</h3>
-                <ul class="list-decimal list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>진입 경로 확보 및 단계적 제압 (협조/비협조 시나리오)</li>
-                    <li>비협조/저항 시 비살상 무기 사용</li>
-                    <li>고립 인원 구출 및 시위대 검거</li>
-                    <li class="font-medium text-red-300">
-                         <span class="bg-red-900/50 px-1 py-0.5 rounded">[돌발 상황]</span> 급조폭발물(IED) 발견 시 <strong class="text-accent">EOD 호출 및 우선 대응</strong>
-                    </li>
-                    <li class="font-medium text-purple-300">
-                         <span class="bg-purple-900/50 px-1 py-0.5 rounded">[미디어 변수]</span> 유튜버/기자, 고립 직원 인터뷰, <strong class="text-purple-200">경찰 대응 비판 여론 조성</strong>
-                    </li>
-                </ul>
+            <!-- Timeline Item 3 -->
+            <div class="relative" data-aos="fade-left">
+                 <div class="absolute -left-[50px] top-0 w-8 h-8 bg-brand-primary rounded-full border-4 border-brand-surface flex items-center justify-center text-white font-bold">3</div>
+                 <div class="bg-brand-surface p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-brand-primary mb-2">13:30 ~ 15:30 : 특공대 진압 작전</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-brand-text-medium marker:text-brand-primary/70">
+                        <li>단계적 제압 (협조/비협조)</li>
+                        <li>비살상 무기 사용 (저항 시)</li>
+                        <li>고립 인원 구출 / 시위대 검거</li>
+                        <li class="font-medium text-brand-danger"><span class="bg-brand-danger/30 px-1 rounded">[돌발]</span> IED 발견 시 <strong class="text-red-400">EOD 우선 대응</strong></li>
+                        <li class="font-medium text-purple-400"><span class="bg-purple-900/50 px-1 rounded">[미디어]</span> <strong class="text-purple-300">경찰 비판 여론</strong> 조성</li>
+                    </ul>
+                 </div>
             </div>
-             <div class="bg-secondary/30 p-4 rounded-lg border-l-4 border-primary">
-                <h3 class="text-xl font-semibold text-primary-light mb-2">15:30 ~ 16:30 : 사후 처리</h3>
-                <ul class="list-decimal list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>현장 통제 및 안전 최종 확보</li>
-                    <li>무기/장비 회수, 체포자 이송, 증거 수집</li>
-                    <li>훈련 종료 선언 및 <strong class="text-slate-300">AAR (After Action Review) 준비</strong></li>
-                </ul>
+             <!-- Timeline Item 4 -->
+            <div class="relative" data-aos="fade-left">
+                 <div class="absolute -left-[50px] top-0 w-8 h-8 bg-brand-primary rounded-full border-4 border-brand-surface flex items-center justify-center text-white font-bold">4</div>
+                 <div class="bg-brand-surface p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-brand-primary mb-2">15:30 ~ 16:30 : 사후 처리</h3>
+                    <ul class="list-disc list-inside ml-4 space-y-1 text-brand-text-medium marker:text-brand-primary/70">
+                        <li>현장 통제 및 안전 최종 확보</li>
+                        <li>장비 회수, 체포자 이송, 증거 수집</li>
+                        <li>훈련 종료 선언 및 <strong class="text-brand-text-light">AAR 준비</strong></li>
+                    </ul>
+                 </div>
             </div>
         </div>
     </section>
 
     <!-- === Slide 8: Key Elements === -->
-     <section id="slide-8" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.125 1.125 0 0 1 0 2.25H5.625a1.125 1.125 0 0 1 0-2.25Z" />
-             </svg>
+    <section id="slide-8" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
+        <h2 class="section-title flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.125 1.125 0 0 1 0 2.25H5.625a1.125 1.125 0 0 1 0-2.25Z" /></svg>
             주요 훈련 요소
         </h2>
-        <ul class="list-none space-y-4 text-lg">
-            <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm-.75-4.75a.75.75 0 0 0 1.5 0V8.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0L6.2 9.74a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" /></svg>
-                <span><strong class="text-slate-200">상황 인식 및 판단:</strong> 우선순위 설정 (인명 > 시설 > 증거)</span>
-            </li>
-            <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path fill-rule="evenodd" d="M4 2a1.5 1.5 0 0 0-1.5 1.5v13A1.5 1.5 0 0 0 4 18h12a1.5 1.5 0 0 0 1.5-1.5V3.5A1.5 1.5 0 0 0 16 2H4Zm10.5 7.75a.75.75 0 0 0-1.5 0v1.563l-.25-.062a5.513 5.513 0 0 0-4.5 0l-.25.063V9.75a.75.75 0 0 0-1.5 0v1.5a.75.75 0 0 0 .666.743 6.998 6.998 0 0 1 5.668 0A.75.75 0 0 0 14.5 11.25v-1.5Z" clip-rule="evenodd" /></svg>
-                <span><strong class="text-slate-200">통제선 형성:</strong> 시위대 확산 차단 및 내/외부 분리</span>
-            </li>
-            <li class="flex items-start">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path d="M3 5.75A.75.75 0 0 1 3.75 5h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 5.75ZM3 10a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 10Zm0 4.25a.75.75 0 0 1 .75-.75h12.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" /></svg>
-                <span><strong class="text-slate-200">단계적 대응:</strong> 협상 → 경고 → 비살상 무기 → 진압/체포</span>
-            </li>
-            <li class="flex items-start">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-5.5-2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM10 12a5.99 5.99 0 0 0-4.793 2.39A6.483 6.483 0 0 0 10 16.5a6.483 6.483 0 0 0 4.793-2.11A5.99 5.99 0 0 0 10 12Z" clip-rule="evenodd" /></svg>
-                <span><strong class="text-slate-200">인질/고립 인원 구출:</strong> 최소 피해 구출 작전</span>
-            </li>
-             <li class="flex items-start">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path d="M2.5 2A1.5 1.5 0 0 0 1 3.5v13A1.5 1.5 0 0 0 2.5 18h15a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 2h-15Zm9.5 4a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-1.5 0V6.75a.75.75 0 0 1 .75-.75Zm0 5a.75.75 0 0 1 .75.75v2.01a.75.75 0 0 1-1.5 0V11.75a.75.75 0 0 1 .75-.75Z" /></svg>
-                <span><strong class="text-slate-200">우발상황 대처:</strong> <em class="text-accent not-italic">IED 위협</em>, 화재, 내부 협조/비협조, <em class="text-purple-300 not-italic">미디어 압박</em></span>
-            </li>
-            <li class="flex items-start">
-                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-3 text-primary-light flex-shrink-0 mt-1"><path d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" /></svg>
-                <span><strong class="text-slate-200">사후 처리:</strong> 점거 해산, 증거 확보, 현장 복구 연계</span>
-            </li>
-        </ul>
-    </section>
-
-    <!-- === Slide 9: Options === -->
-    <section id="slide-9" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" />
-             </svg>
-            시나리오 확장 옵션 (고려 사항)
-        </h2>
-        <ol class="list-decimal list-inside space-y-3 text-lg text-text-secondary">
-            <li><strong class="text-slate-200">무장 수준 강화:</strong> 일부 주동자 <em class="text-accent not-italic font-semibold">총기(모의탄) 또는 실제 폭발물 소지</em> 설정</li>
-            <li><strong class="text-slate-200">사이버 교란:</strong> SNS 통한 <em class="text-yellow-300 not-italic font-semibold">가짜 정보 유포</em> 로 혼란 가중</li>
-            <li><strong class="text-slate-200">동시다발 사건:</strong> 다른 관공서 유사 상황 동시 발생 → <em class="text-blue-300 not-italic font-semibold">자원 분산 및 지휘 통제</em> 훈련</li>
-            <li><strong class="text-slate-200">언론 압박 심화:</strong> 생중계 및 SNS 통한 <em class="text-purple-300 not-italic font-semibold">경찰 대응 여론 극도 악화</em> 상황 연출</li>
-        </ol>
-    </section>
-
-    <!-- === Slide 10: OPFOR Roles === -->
-    <section id="slide-10" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon text-accent">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-            </svg>
-            역할자 행동: <span class="text-accent ml-2">시위대 (OPFOR)</span>
-        </h2>
-        <div class="space-y-5">
-            <div>
-                <h3 class="text-xl font-semibold text-red-300 mb-2">급진 시위자 주동자 (1명)</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>선동 및 폭력 지휘, 진입 시도 주도</li>
-                    <li>건물 내 주요 지점(계단, 출입구) 점거</li>
-                    <li>바리케이드 형성, 경찰 진입 시 저항 (모의 연막탄 사용 가능)</li>
-                    <li class="text-red-200 font-medium"><strong class="bg-red-900/50 px-1 py-0.5 rounded">[중요]</strong> 2명은 건물 내 <strong class="text-accent">IED 제조 시도</strong></li>
-                    <li class="text-red-200 font-medium"><strong class="bg-red-900/50 px-1 py-0.5 rounded">[중요]</strong> <strong class="text-accent">가짜/실제 폭발물 혼합 배치</strong>로 특공대 혼란 유발</li>
-                </ul>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-red-300 mb-2">급진 행동 시위자 (2명)</h3>
-                <p class="text-text-secondary ml-4">주동자 지시에 따라 적극적 행동 및 저항</p>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">온건 행동 시위자 (2명)</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>급진 시위자 저지 시도</li>
-                    <li class="text-green-300">특공대 진입 시 <strong class="text-safe">협력적 태도</strong> 가능성</li>
-                </ul>
-            </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+            {[...Array(6)].map((_, index) => {
+                const titles = ["상황 인식/판단", "통제선 형성", "단계적 대응", "인원 구출", "우발상황 대처", "사후 처리"];
+                const descs = ["우선순위 설정", "확산 차단/분리", "협상→경고→진압", "최소 피해 구출", "IED, 미디어 압박 등", "점거 해산, 증거 확보"];
+                const icons = [
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" /></svg>`,
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l5.25 5.25" /></svg>`,
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>`,
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>`,
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>`,
+                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>`
+                 ];
+                 return `
+                    <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="${index * 100}">
+                         <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">${icons[index]}</div>
+                         <div>
+                            <h4 class="font-semibold text-lg text-brand-text-light mb-1">${titles[index]}</h4>
+                            <p class="text-sm text-brand-text-medium">${descs[index]}</p>
+                         </div>
+                    </div>
+                `;
+            }).join('')}
         </div>
     </section>
 
-    <!-- === Slide 11: Other Roles === -->
-    <section id="slide-11" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-3.741-5.588M18 18.72V9.75M18 9.75c0-1.036-.84-1.875-1.875-1.875H3.75A1.875 1.875 0 0 0 1.875 9.75v9.172a9.094 9.094 0 0 0 3.741.479 3 3 0 0 0 3.741-5.588M12 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-            역할자 행동: 기타 역할
-        </h2>
-         <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">고립된 선관위 직원 (1명)</h3>
-                <p class="text-text-secondary ml-4">위축, 보호 요청, 협조적 태도</p>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-yellow-300 mb-2">비협조적 역할자 (1명)</h3>
-                <p class="text-text-secondary ml-4">시위대 동조, <strong class="text-yellow-200">잘못된 정보 전달</strong>, 혼란 유발</p>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">중립적 역할자 (2명+a)</h3>
-                <p class="text-text-secondary ml-4">공포, 대피 시도, <strong class="text-blue-300">부상자 역할 가능</strong> (의료팀 훈련)</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-purple-300 mb-2">유튜버 (1명)</h3>
-                <p class="text-text-secondary ml-4">실시간 방송, 충돌 부각, <strong class="text-purple-200">여론 자극/피해자 중심 편집</strong></p>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">경찰관 (1명 - 고립)</h3>
-                <p class="text-text-secondary ml-4">시위대에 쫓김, 권총 소지</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 12: Evaluation & Goal === -->
-     <section id="slide-12" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
-             </svg>
-            훈련 평가 및 최종 목표
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <div>
-                 <h3 class="text-xl font-semibold text-slate-200 mb-3">훈련 평가 항목</h3>
-                 <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                     <li>진압 작전의 <strong class="text-slate-300">속도 및 정확성</strong></li>
-                     <li><strong class="text-slate-300">민간인/인질 피해 최소화</strong> 여부</li>
-                     <li>폭발물 위협 시 <strong class="text-slate-300">대응 절차 준수</strong></li>
-                     <li>팀(특공대, 협상, EOD 등) 간 <strong class="text-slate-300">협력 및 통신</strong></li>
-                     <li>현장 지휘관의 <strong class="text-slate-300">상황 판단 및 결심</strong></li>
-                 </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-3">피드백</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li>훈련 종료 후 전 참가자 대상 <strong class="text-slate-300">AAR 실시</strong></li>
-                    <li><strong class="text-slate-300">개선점 및 보완점</strong> 도출</li>
-                    <li>차후 훈련 계획에 반영</li>
-                </ul>
-            </div>
-        </div>
-        <div class="final-goal bg-secondary p-6 border-l-8 border-primary mt-8 font-semibold text-slate-100 rounded-r-lg shadow-md text-center">
-            <h3 class="text-2xl text-primary-light mb-2">최종 목표</h3>
-            <p class="text-lg">질서 회복과 안전 확보를 최우선으로 하여,<br> 실제 상황에서도 <strong class="text-primary-light">민간인 피해 없이 효율적으로 대응</strong>할 수 있는 역량 강화</p>
-        </div>
-    </section>
-
-    <!-- === Slide 13: Separator === -->
-    <section id="slide-13" class="slide flex items-center justify-center text-center min-h-[30vh] mb-12">
-        <div class="w-full">
-            <hr class="border-t-4 border-dashed border-primary/30 my-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-primary-light">다음: OPFOR & White Cell 운영 지침</h2>
-             <hr class="border-t-4 border-dashed border-primary/30 my-8">
-        </div>
-    </section>
-
-    <!-- === Slide 14: OPFOR/White Cell Overview === -->
-     <section id="slide-14" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" />
-            </svg>
-            OPFOR & White Cell 운영 개요
-        </h2>
-        <div class="space-y-5 text-lg">
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">운영 목적</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>현실적인 훈련 환경 조성</li>
-                    <li>경찰특공대의 군중 통제, 진압/체포 기술 강화</li>
-                    <li><strong class="text-safe">안전한 훈련 환경</strong> 보장</li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">운영 주체</h3>
-                 <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li><strong class="text-slate-300">White Cell:</strong> 훈련 통제, 안전 모니터링, 기록, 역할 조정</li>
-                    <li><strong class="text-accent">OPFOR:</strong> 시위대/기타 역할 수행, 시나리오 기반 행동</li>
-                </ul>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">기본 원칙</h3>
-                <p class="text-red-300 font-bold text-xl ml-4 flex items-center">
-                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 mr-2 text-accent">
-                       <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" />
-                     </svg>
-                    <span class="text-accent">안전 최우선!</span> 모든 활동은 안전 확보 하에 진행
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 15: Roles & Responsibilities === -->
-    <section id="slide-15" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
-            </svg>
-            역할 및 책임 요약
-        </h2>
-        <div class="overflow-x-auto rounded-lg border border-border-color shadow-md">
-            <table class="w-full text-base text-left text-text-secondary bg-gray-800/50">
-                <thead class="text-sm text-text-primary uppercase bg-secondary">
-                    <tr>
-                        <th scope="col" class="px-6 py-4">역할</th>
-                        <th scope="col" class="px-6 py-4">주요 책임</th>
-                        <th scope="col" class="px-6 py-4">주요 권한/주의사항</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-slate-100 whitespace-nowrap">White Cell</td>
-                        <td class="px-6 py-4">훈련 통제, 안전 관리, 기록/평가</td>
-                        <td class="px-6 py-4"><strong class="safety-call font-bold text-accent">STOP CALL (중단권)</strong> 보유</td>
-                    </tr>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-red-300 whitespace-nowrap">OPFOR (시위대 등)</td>
-                        <td class="px-6 py-4">시나리오 기반 역할 수행, 저항 조절</td>
-                        <td class="px-6 py-4 text-red-200">과도한 신체 접촉 <strong class="text-accent">금지</strong></td>
-                    </tr>
-                     <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-green-300 whitespace-nowrap">Safety Officer</td>
-                        <td class="px-6 py-4">현장 안전 점검, 촬영, 응급 대응</td>
-                        <td class="px-6 py-4 text-safe">구급 키트/연락 수단 보유</td>
-                    </tr>
-                    <tr class="hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-blue-300 whitespace-nowrap">BLUE FORCE</td>
-                        <td class="px-6 py-4">훈련 과업 수행, 안전 수칙 준수</td>
-                        <td class="px-6 py-4">위험 시 <strong class="safety-call-green font-bold text-safe">"SAFETY!"</strong> 구호</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- === Slide 16: OPFOR Guidelines === -->
-    <section id="slide-16" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-accent mb-6 pb-3 border-b border-accent/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-             </svg>
-            역할별 세부 지침: <span class="ml-2">OPFOR</span>
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">임무</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li>선관위 점거 세력 시뮬레이션</li>
-                    <li>시나리오 기반 저항 강도 조절</li>
-                    <li>BLUE FORCE 대응 유도</li>
-                </ul>
-                 <h3 class="text-xl font-semibold text-slate-200 mt-6 mb-2">주요 교육사항</h3>
-                 <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                     <li>저항/폭력 행동 강도 조절 방법</li>
-                     <li>비상 상황 시 행동 요령 숙지</li>
-                 </ul>
-            </div>
-             <div class="bg-red-900/20 p-4 rounded-lg border border-accent/50">
-                <h3 class="text-xl font-semibold text-accent mb-2">제한사항 (필수 준수!)</h3>
-                <ol class="list-decimal list-inside space-y-1 text-red-200 font-medium">
-                    <li>물리적 접촉 제한 (허가 외 폭력 금지)</li>
-                    <li>훈련 범위 이탈 금지</li>
-                    <li>안전 신호 절대 준수 (<strong class="text-accent">STOP</strong>/<strong class="text-safe">SAFETY</strong>)</li>
-                    <li>시나리오 임의 변경 금지</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 17: Civilian Role Guidelines === -->
-    <section id="slide-17" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-3.741-5.588M18 18.72V9.75M18 9.75c0-1.036-.84-1.875-1.875-1.875H3.75A1.875 1.875 0 0 0 1.875 9.75v9.172a9.094 9.094 0 0 0 3.741.479 3 3 0 0 0 3.741-5.588M12 12.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-            역할별 세부 지침: <span class="ml-2">민간인 역할</span>
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">임무</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li>현장 내 일반 시민 역할 수행</li>
-                    <li>특공대/시위대 행동에 따른 현실적 반응</li>
-                </ul>
-                 <h3 class="text-xl font-semibold text-slate-200 mt-6 mb-2">주요 교육사항</h3>
-                 <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                     <li>사전 역할 브리핑 숙지</li>
-                     <li>행동 시나리오 이해</li>
-                     <li>비상 상황 시 조치 (안전 신호 등)</li>
-                 </ul>
-            </div>
-             <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-400/50">
-                <h3 class="text-xl font-semibold text-yellow-300 mb-2">제한사항</h3>
-                <ol class="list-decimal list-inside space-y-1 text-yellow-200 font-medium">
-                    <li>과도한 개입 금지 (직접 충돌 X)</li>
-                    <li>지정된 역할 유지 (임의 행동 X)</li>
-                    <li>안전 최우선 (위험 시 <strong class="text-safe">SAFETY</strong> 요청/이탈)</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 18: White Cell Guidelines === -->
-    <section id="slide-18" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-             </svg>
-            역할별 세부 지침: <span class="ml-2">WHITE CELL</span>
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">임무</h3>
-                <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                    <li>훈련 전반 운영 및 <strong class="text-safe">안전 통제</strong></li>
-                    <li>시나리오 진행 관리/조정</li>
-                    <li>훈련 성과 기록 및 평가 지원</li>
-                    <li>예상치 못한 상황 발생 시 <strong class="text-accent">즉각 개입/통제</strong></li>
-                </ul>
-                 <h3 class="text-xl font-semibold text-slate-200 mt-6 mb-2">주요 교육사항</h3>
-                 <ul class="list-disc list-inside space-y-1 text-text-secondary">
-                     <li>무전 통신 규약</li>
-                     <li>안전 점검 절차/체크리스트</li>
-                     <li>상황 기록 및 AAR 양식</li>
-                 </ul>
-            </div>
-             <div class="bg-gray-700 p-4 rounded-lg border border-border-color">
-                <h3 class="text-xl font-semibold text-slate-300 mb-2">제한사항</h3>
-                <ol class="list-decimal list-inside space-y-1 text-text-secondary font-medium">
-                    <li>훈련 직접 개입 금지 (안전 관련 제외)</li>
-                    <li>역할 중립 유지 (객관성)</li>
-                    <li>주요 변경 시 총괄관 승인 필요</li>
-                    <li><strong class="text-accent">STOP CALL</strong> / <strong class="text-safe">SAFETY</strong> 발령 권한 명확히 인지</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 19: Pre-Training Safety === -->
-     <section id="slide-19" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-safe mb-6 pb-3 border-b border-safe/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-            </svg>
-            훈련 전 준비 사항 (<span class="text-safe ml-2">안전 중심</span>)
-        </h2>
-        <div class="space-y-6">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">1. 전체 브리핑 (필수)</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>시나리오, 역할, 안전 수칙 <strong class="text-slate-300">재확인</strong></li>
-                    <li>행동 경계선 명확화 (허용/금지)</li>
-                    <li><strong class="text-accent">비접촉 구역 강조</strong> (머리, 목, 척추 등)</li>
-                    <li><strong class="text-slate-300">중단 신호 교육:</strong>
-                        <ul class="list-circle list-inside ml-6 mt-1 text-sm">
-                             <li><strong class="safety-call font-bold text-accent">"STOP CALL!"</strong> : 즉시 모든 행동 중지 (심각 위험)</li>
-                             <li><strong class="safety-call-green font-bold text-safe">"SAFETY!"</strong> : 주의 환기, 관련자 행동 잠시 중지 (경미 위험)</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="text-xl font-semibold text-slate-200 mb-2">2. 장비 점검</h3>
-                    <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                        <li>참가자 <strong class="text-slate-300">보호 장구</strong> 착용 확인</li>
-                        <li>통제팀 <strong class="text-slate-300">무전기, 구급 키트</strong> 확인</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-slate-200 mb-2">3. 의료 대기</h3>
-                    <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                        <li><strong class="text-slate-300">구급 키트/장비</strong> 비치 확인</li>
-                        <li><strong class="text-slate-300">의료 인력</strong> 현장 대기 확인</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 20: Safety Rules - STOP CALL === -->
-    <section id="slide-20" class="slide bg-red-900/10 rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-accent">
-        <h2 class="text-3xl font-bold text-accent mb-6 pb-3 border-b border-accent/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" />
-            </svg>
+    <!-- ... (Continue converting OPFOR, WHITE CELL, SAFETY sections) ... -->
+    <!-- Example for Safety Section -->
+    <section id="slide-20" class="bg-brand-danger-bg rounded-xl shadow-xl p-8 md:p-12 mb-16 border-t-4 border-brand-danger" data-aos="fade-up">
+        <h2 class="section-title !text-brand-danger !border-brand-danger flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
             안전 수칙: <span class="ml-2">STOP CALL (즉시 중단)</span>
         </h2>
-        <div class="p-5 bg-red-900/30 border border-accent rounded-lg shadow-lg mb-6">
-            <h3 class="text-4xl font-black text-accent text-center mb-4">STOP CALL!</h3>
+        <div class="text-center p-6 bg-brand-danger/30 border border-brand-danger rounded-lg shadow-inner my-8" data-aos="zoom-in">
+            <h3 class="text-5xl font-black text-brand-danger tracking-wider">STOP CALL!</h3>
         </div>
         <div class="grid md:grid-cols-2 gap-8 text-red-200">
-            <div>
-                 <h4 class="text-xl font-semibold text-red-100 mb-2">목적</h4>
-                 <p>중대한 안전 위험 또는 통제 불능 시, 모든 활동 <strong class="text-accent">즉시 정지</strong></p>
-
-                 <h4 class="text-xl font-semibold text-red-100 mt-4 mb-2">발령 권한</h4>
-                 <p><strong class="text-red-100">모든 참가자</strong> 및 White Cell</p>
-
-                 <h4 class="text-xl font-semibold text-red-100 mt-4 mb-2">사용 시점</h4>
-                 <ul class="list-disc list-inside ml-4 text-sm space-y-1">
-                    <li>심각한 안전 위협 (화재, 폭발 의심, 붕괴 등)</li>
-                    <li>중상 발생 (의식 상실, 심각 출혈 등)</li>
-                    <li>통제 불능 상황 (실제 폭력 등)</li>
-                    <li>주요 장비 오작동 (훈련 진행 불가)</li>
+            <div data-aos="fade-right">
+                 <h4 class="text-xl font-semibold text-red-100 mb-2">발령 시점</h4>
+                 <ul class="list-disc list-inside ml-4 text-sm space-y-1 marker:text-brand-danger">
+                    <li>심각한 안전 위협 (화재, 폭발 의심 등)</li>
+                    <li>중상 발생</li>
+                    <li>통제 불능 상황</li>
+                    <li>주요 장비 오작동</li>
                  </ul>
             </div>
-             <div>
-                 <h4 class="text-xl font-semibold text-red-100 mb-2">발령 및 행동 절차</h4>
-                 <ol class="list-decimal list-inside ml-4 space-y-1">
-                    <li>위험 감지 시 <strong class="text-accent">"STOP CALL!" 3회</strong> 외침 (육성/무전)</li>
-                    <li><strong class="text-red-100">모든 인원 동작 즉시 중지</strong>, 현 위치 고정</li>
-                    <li>White Cell/안전관 위험 요소 확인 및 조치</li>
-                    <li>상황 해소 후 <strong class="text-safe">"All Clear"</strong> 신호 받고 훈련 재개</li>
+             <div data-aos="fade-left">
+                 <h4 class="text-xl font-semibold text-red-100 mb-2">행동 절차</h4>
+                 <ol class="list-decimal list-inside ml-4 space-y-1 marker:text-brand-danger">
+                    <li><strong class="text-red-100">"STOP CALL!" 3회</strong> 외침</li>
+                    <li>모든 인원 <strong class="text-red-100">동작 즉시 중지</strong></li>
+                    <li>White Cell/안전관 위험 조치</li>
+                    <li><strong class="text-green-400">"All Clear"</strong> 후 훈련 재개</li>
                  </ol>
-                 <p class="mt-4 text-sm italic"><strong class="text-accent">주의:</strong> STOP CALL 발령 시, 이유 불문하고 즉시 모든 행동을 멈춰야 함!</p>
              </div>
         </div>
+         <p class="mt-8 text-center text-sm italic text-red-300"><strong class="text-brand-danger">주의:</strong> 이유 불문하고 즉시 모든 행동을 멈춰야 함!</p>
     </section>
 
-     <!-- === Slide 21: Safety Rules - SAFETY === -->
-    <section id="slide-21" class="slide bg-green-900/10 rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-safe">
-        <h2 class="text-3xl font-bold text-safe mb-6 pb-3 border-b border-safe/50 flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-             </svg>
+    <!-- Slide 21: SAFETY -->
+     <section id="slide-21" class="bg-brand-safe-bg rounded-xl shadow-xl p-8 md:p-12 mb-16 border-t-4 border-brand-safe" data-aos="fade-up">
+         <h2 class="section-title !text-brand-safe !border-brand-safe flex items-center">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             안전 수칙: <span class="ml-2">SAFETY (주의 환기)</span>
         </h2>
-         <div class="p-5 bg-green-900/30 border border-safe rounded-lg shadow-lg mb-6">
-            <h3 class="text-4xl font-black text-safe text-center mb-4">SAFETY!</h3>
+        <div class="text-center p-6 bg-brand-safe/30 border border-brand-safe rounded-lg shadow-inner my-8" data-aos="zoom-in">
+            <h3 class="text-5xl font-black text-brand-safe tracking-wider">SAFETY!</h3>
         </div>
-        <div class="grid md:grid-cols-2 gap-8 text-green-200">
-            <div>
-                 <h4 class="text-xl font-semibold text-green-100 mb-2">목적</h4>
-                 <p>경미한 위험 또는 오해 발생 가능성 시, <strong class="text-safe">주의 환기 및 사전 조치</strong></p>
-
-                 <h4 class="text-xl font-semibold text-green-100 mt-4 mb-2">발령 권한</h4>
-                 <p><strong class="text-green-100">모든 참가자</strong> 및 White Cell</p>
-
-                 <h4 class="text-xl font-semibold text-green-100 mt-4 mb-2">사용 시점</h4>
-                 <ul class="list-disc list-inside ml-4 text-sm space-y-1">
-                    <li>경미한 부상 (넘어짐, 찰과상 등)</li>
-                    <li>환경적 위험 (미끄러운 바닥, 장애물 등)</li>
-                    <li>상황 오해 또는 혼란 발생 우려 시</li>
-                    <li>과열된 언쟁 등 (물리 충돌 전 단계)</li>
+         <div class="grid md:grid-cols-2 gap-8 text-green-200">
+             <div data-aos="fade-right">
+                 <h4 class="text-xl font-semibold text-green-100 mb-2">발령 시점</h4>
+                 <ul class="list-disc list-inside ml-4 text-sm space-y-1 marker:text-brand-safe">
+                     <li>경미한 부상 발생</li>
+                     <li>환경적 위험 요소 발견</li>
+                     <li>상황 오해 / 혼란 우려</li>
+                     <li>과열된 언쟁 (충돌 전)</li>
                  </ul>
-            </div>
-             <div>
-                 <h4 class="text-xl font-semibold text-green-100 mb-2">발령 및 행동 절차</h4>
-                 <ol class="list-decimal list-inside ml-4 space-y-1">
-                    <li>위험/우려 감지 시 <strong class="text-safe">"SAFETY!" 1회</strong> 외침</li>
-                    <li><strong class="text-green-100">관련 인원 행동 잠시 중지</strong>, 주변 확인</li>
-                    <li>위험 요소 제거 또는 상황 인지/조정</li>
-                    <li>안전 확인 후 <strong class="text-safe">훈련 자연스럽게 지속</strong></li>
-                 </ol>
-                 <p class="mt-4 text-sm italic"><strong class="text-safe">참고:</strong> SAFETY는 훈련 흐름을 완전히 끊지 않고, 잠재적 위험을 관리하기 위함.</p>
              </div>
-        </div>
-    </section>
+             <div data-aos="fade-left">
+                 <h4 class="text-xl font-semibold text-green-100 mb-2">행동 절차</h4>
+                 <ol class="list-decimal list-inside ml-4 space-y-1 marker:text-brand-safe">
+                     <li><strong class="text-green-100">"SAFETY!" 1회</strong> 외침</li>
+                     <li>관련 인원 <strong class="text-green-100">행동 잠시 중지</strong>, 확인</li>
+                     <li>위험 제거 / 상황 조정</li>
+                     <li>안전 확인 후 <strong class="text-green-100">훈련 자연스럽게 지속</strong></li>
+                 </ol>
+             </div>
+         </div>
+          <p class="mt-8 text-center text-sm italic text-green-300"><strong class="text-brand-safe">참고:</strong> 훈련 흐름을 완전히 끊지 않고 잠재 위험 관리 목적.</p>
+     </section>
 
-     <!-- === Slide 22: Safety Rules Summary & Guidelines === -->
-     <section id="slide-22" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-         <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l-4.25-4.25a5.956 5.956 0 0 1-1.652-4.11V6.75a3.369 3.369 0 0 1 5.5-2.7A3.369 3.369 0 0 1 15.675 8.25V9.75a5.956 5.956 0 0 1-4.11 1.652l-4.25 4.25m5.877-5.877L17.25 21M15.675 8.25h-5.5" />
-            </svg>
-            안전 수칙: 요약 및 주요 지침
-        </h2>
-        <div class="overflow-x-auto rounded-lg border border-border-color shadow-md mb-8">
-            <table class="w-full text-sm text-left text-text-secondary bg-gray-800/50">
-                 <caption class="p-3 text-lg font-semibold text-left text-slate-100 bg-secondary rounded-t-lg">
-                    STOP CALL vs SAFETY 비교
-                </caption>
-                <thead class="text-xs text-text-primary uppercase bg-gray-700">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">항목</th>
-                        <th scope="col" class="px-6 py-3 text-accent">STOP CALL</th>
-                        <th scope="col" class="px-6 py-3 text-safe">SAFETY</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-border-color">
-                        <td class="px-6 py-3 font-medium text-slate-100">목적</td>
-                        <td class="px-6 py-3"><strong class="text-accent">즉시 중단</strong> (심각 위험)</td>
-                        <td class="px-6 py-3"><strong class="text-safe">주의 환기</strong> (경미 위험)</td>
-                    </tr>
-                     <tr class="border-b border-border-color">
-                        <td class="px-6 py-3 font-medium text-slate-100">발령 권한</td>
-                        <td class="px-6 py-3">모든 참가자</td>
-                        <td class="px-6 py-3">모든 참가자</td>
-                    </tr>
-                    <tr class="border-b border-border-color">
-                        <td class="px-6 py-3 font-medium text-slate-100">행동</td>
-                        <td class="px-6 py-3"><strong class="text-accent">즉시 정지, All Clear 후 재개</strong></td>
-                        <td class="px-6 py-3"><strong class="text-safe">잠시 중지, 확인 후 지속</strong></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-         <div>
-            <h3 class="text-xl font-semibold text-slate-200 mb-3">주요 운영 지침</h3>
-             <ol class="list-decimal list-inside ml-4 space-y-2 text-lg text-text-secondary">
-                 <li><strong class="text-slate-100">누구나 발령 가능:</strong> 위험 감지 시 망설이지 말고 외칠 것!</li>
-                 <li><strong class="text-accent">STOP CALL은 절대적:</strong> 발령 시 무조건 중단, 지시 대기.</li>
-                 <li><strong class="text-slate-100">무전/구두 병행:</strong> 전체 통보 및 현장 즉각 알림.</li>
-                 <li><strong class="text-slate-100">상황 해소 후 보고/재개:</strong> White Cell 통제 하에 진행.</li>
-             </ol>
-             <p class="highlight mt-6 p-4 bg-blue-900/30 border border-primary rounded-md text-blue-200 text-center font-medium">
-                안전과 통제력 유지를 통해 <strong class="text-primary-light">실전적 몰입</strong>과 <strong class="text-accent">위험 방지</strong>를 동시에 달성합니다.
-             </p>
-        </div>
-    </section>
-
-     <!-- === Slide 23: Behavior Limits & Emergency Response === -->
-    <section id="slide-23" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-            안전 수칙: 행동 제한 및 응급 대응
-        </h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-red-900/20 p-4 rounded-lg border border-accent/50">
-                 <h3 class="text-xl font-semibold text-accent mb-3">(1) 행동 수준 제한</h3>
-                 <div class="overflow-x-auto rounded">
-                    <table class="w-full text-sm text-left text-red-200">
-                         <thead class="text-xs text-red-100 uppercase bg-red-900/50">
-                            <tr>
-                                <th scope="col" class="px-4 py-2">구분</th>
-                                <th scope="col" class="px-4 py-2">허용 수준</th>
-                                <th scope="col" class="px-4 py-2">금지 사항</th>
-                            </tr>
-                         </thead>
-                         <tbody>
-                            <tr class="border-b border-accent/30">
-                                <td class="px-4 py-2">신체 접촉</td>
-                                <td class="px-4 py-2">밀치기 정도</td>
-                                <td class="px-4 py-2">가격, 조르기, 넘어뜨리기</td>
-                            </tr>
-                             <tr class="border-b border-accent/30">
-                                <td class="px-4 py-2">언어</td>
-                                <td class="px-4 py-2">구호, 협상</td>
-                                <td class="px-4 py-2">욕설, 모욕</td>
-                            </tr>
-                            <tr>
-                                <td class="px-4 py-2">장비</td>
-                                <td class="px-4 py-2">훈련용 모의 장비</td>
-                                <td class="px-4 py-2">실제 무기/유해물질</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                 </div>
-                 <p class="mt-3 text-sm text-red-200 italic">*OPFOR는 시나리오 외 행동 금지.</p>
-            </div>
-             <div>
-                 <h3 class="text-xl font-semibold text-slate-200 mb-3">(2) 위험 상황 및 응급 대응</h3>
-                 <ul class="list-disc list-inside space-y-2 text-text-secondary">
-                    <li>White Cell은 <strong class="text-accent">"Stop Call"</strong>로 즉각 중단 가능</li>
-                    <li><strong class="text-slate-300">경미 부상:</strong> Safety Officer 보고 및 응급 처치</li>
-                    <li><strong class="text-accent">중대 부상:</strong> <strong class="text-accent">"Stop Call!"</strong> 외치고 의료팀 호출</li>
-                    <li><strong class="text-slate-300">환경 위험:</strong> 위험 요소 즉시 제거 (Safety Officer/White Cell)</li>
-                 </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 24: Post-Training === -->
-    <section id="slide-24" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
-            </svg>
-            훈련 후 조치
-        </h2>
-        <div class="space-y-5 text-lg">
-            <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">1. 종료 브리핑 (AAR - After Action Review)</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li><strong class="text-slate-300">전 참가자 참여</strong> 필수</li>
-                    <li>훈련 중 발생 상황, 잘된 점, 미흡한 점 검토</li>
-                    <li>안전 문제 및 대응 적절성 논의</li>
-                </ul>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">2. 부상자 점검</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>훈련 종료 후 <strong class="text-slate-300">전원 건강 상태 최종 확인</strong></li>
-                    <li>필요시 추가 의료 조치 연계</li>
-                </ul>
-            </div>
-             <div>
-                <h3 class="text-xl font-semibold text-slate-200 mb-2">3. 장비 점검 및 회수</h3>
-                <ul class="list-disc list-inside ml-4 space-y-1 text-text-secondary">
-                    <li>훈련 장비 손상 여부 확인 및 기록</li>
-                    <li>지급된 모든 장비 회수</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- === Slide 25: Contingency Plan === -->
-    <section id="slide-25" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-primary-light mb-6 pb-3 border-b border-primary/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-            </svg>
-            훈련 예측 변수 대응
-        </h2>
-         <div class="overflow-x-auto rounded-lg border border-border-color shadow-md">
-            <table class="w-full text-base text-left text-text-secondary bg-gray-800/50">
-                <thead class="text-sm text-text-primary uppercase bg-secondary">
-                    <tr>
-                        <th scope="col" class="px-6 py-4">상황</th>
-                        <th scope="col" class="px-6 py-4">대응 지침</th>
-                        <th scope="col" class="px-6 py-4">담당</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-red-300">시위대 과잉 행동</td>
-                        <td class="px-6 py-4">즉시 <strong class="safety-call font-bold text-accent">"Stop Call!"</strong>, 행동 중단/분리</td>
-                        <td class="px-6 py-4 text-slate-100">White Cell</td>
-                    </tr>
-                     <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-yellow-300">훈련 중 장비 파손</td>
-                        <td class="px-6 py-4"><strong class="safety-call-green text-safe">"Safety"</strong> 또는 필요시 중단, 장비 교체</td>
-                        <td class="px-6 py-4 text-slate-100">Safety Officer</td>
-                    </tr>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4 font-medium text-red-300">참가자 부상</td>
-                        <td class="px-6 py-4">경중에 따라 <strong class="text-safe">Safety/</strong><strong class="text-accent">Stop Call</strong>, 응급처치/이송</td>
-                        <td class="px-6 py-4 text-slate-100">Safety Officer / 의료팀</td>
-                    </tr>
-                    <tr class="hover:bg-gray-700/50">
-                         <td class="px-6 py-4 font-medium text-blue-300">심리적 스트레스 호소</td>
-                        <td class="px-6 py-4">개인 면담, 휴식 제공, 필요시 훈련 제외</td>
-                        <td class="px-6 py-4 text-slate-100">White Cell</td>
-                    </tr>
-                </tbody>
-            </table>
+    <!-- === Slide 27: Q&A / End === -->
+    <section id="slide-27" class="gradient-bg flex flex-col items-center justify-center text-center rounded-xl shadow-2xl p-10 md:p-16 mb-16 min-h-[60vh] relative" data-aos="fade-up">
+         <div class="absolute inset-0 bg-brand-dark opacity-80 backdrop-blur-sm"></div>
+         <div class="relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">질의응답 및 훈련 준비 완료</h2>
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-brand-primary mx-auto mb-6" data-aos="zoom-in">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+             </svg>
+            <p class="text-xl text-brand-text-medium mb-6" data-aos="fade-up" data-aos-delay="100">궁금한 점이나 불확실한 부분에 대해 질문해 주십시오.</p>
+            <p class="text-lg text-brand-safe font-semibold" data-aos="fade-up" data-aos-delay="200">모든 참가자의 안전과 성공적인 훈련을 기원합니다.</p>
          </div>
     </section>
 
-    <!-- === Slide 26: Safety Checklist === -->
-     <section id="slide-26" class="slide bg-surface rounded-xl shadow-lg p-8 md:p-12 mb-12 border border-border-color">
-        <h2 class="text-3xl font-bold text-safe mb-6 pb-3 border-b border-safe/50 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 6.75 21h10.5a2.25 2.25 0 0 0 2.25-2.25v-3.75" />
-            </svg>
-            안전 점검 체크리스트 (훈련 전/후)
-        </h2>
-        <div class="overflow-x-auto rounded-lg border border-border-color shadow-md">
-            <table class="w-full text-base text-left text-text-secondary bg-gray-800/50">
-                 <thead class="text-sm text-text-primary uppercase bg-secondary">
-                    <tr>
-                        <th scope="col" class="px-6 py-4">항목</th>
-                        <th scope="col" class="px-6 py-4 w-40 text-center">확인 (√)</th>
-                    </tr>
-                 </thead>
-                 <tbody>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4">참가자 보호 장구 (헬멧, 보호대 등) 착용 확인</td>
-                        <td class="px-6 py-4 text-center text-2xl text-safe">□</td>
-                    </tr>
-                     <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4">응급 처치 키트 및 의료 장비 준비 상태 점검</td>
-                         <td class="px-6 py-4 text-center text-2xl text-safe">□</td>
-                    </tr>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4">무전기 작동 및 비상 연락 수단 확보</td>
-                         <td class="px-6 py-4 text-center text-2xl text-safe">□</td>
-                    </tr>
-                    <tr class="border-b border-border-color hover:bg-gray-700/50">
-                        <td class="px-6 py-4">의료팀 또는 응급구조사 현장 대기 확인</td>
-                         <td class="px-6 py-4 text-center text-2xl text-safe">□</td>
-                    </tr>
-                    <tr class="hover:bg-gray-700/50">
-                        <td class="px-6 py-4">훈련 구역 내 위험 요소 (장애물, 날카로운 물체 등) 사전 점검 및 제거</td>
-                         <td class="px-6 py-4 text-center text-2xl text-safe">□</td>
-                    </tr>
-                 </tbody>
-            </table>
-        </div>
-        <p class="text-center mt-6 text-sm text-text-secondary">*모든 항목은 훈련 전/후 반드시 확인합니다.</p>
-    </section>
-
-     <!-- === Slide 27: Q&A / End === -->
-    <section id="slide-27" class="slide flex flex-col items-center justify-center text-center min-h-[60vh] bg-gradient-to-tr from-surface to-background rounded-xl shadow-2xl p-10 mb-12 border border-border-color">
-        <h2 class="text-4xl font-bold text-primary-light mb-8">질의응답 및 훈련 준비</h2>
-         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-slate-400 mx-auto mb-6">
-           <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-         </svg>
-        <p class="text-xl text-text-secondary mb-6">궁금한 점이나 불확실한 부분에 대해 질문해 주십시오.</p>
-        <p class="text-lg text-safe font-semibold">모든 참가자의 안전과 성공적인 훈련을 기원합니다.</p>
-         <footer class="absolute bottom-4 left-0 right-0 text-center text-sm text-text-secondary">
-            <p>문서 버전: 1.1 (HTML-PPT) / 최종 수정: 2025-03-11</p>
-         </footer>
-    </section>
-
 </div> <!-- /container -->
+
+<!-- Footer -->
+<footer class="bg-brand-surface text-brand-text-medium py-12 px-4">
+    <div class="container max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+            <h3 class="text-xl font-semibold text-brand-text-light mb-4">훈련 개요</h3>
+            <p class="text-sm">광주 경찰특공대<br>공공기관 점거 대응 훈련<br>문서 버전: 1.1 (HTML)</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-brand-text-light mb-4">바로가기</h3>
+            <ul class="space-y-2 text-sm">
+                <li><a href="#slide-2" class="hover:text-brand-primary transition duration-300">훈련 개요</a></li>
+                <li><a href="#slide-8" class="hover:text-brand-primary transition duration-300">주요 요소</a></li>
+                <li><a href="#slide-14" class="hover:text-brand-primary transition duration-300">OPFOR/White Cell</a></li>
+                <li><a href="#slide-19" class="hover:text-brand-primary transition duration-300">안전 수칙</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-brand-text-light mb-4">연락처 (가상)</h3>
+            <p class="text-sm">훈련 통제 본부<br>Email: control@gjkptu-training.kr<br>Tel: 062-XXX-XXXX</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-semibold text-brand-text-light mb-4">안전 제일</h3>
+            <p class="text-sm">모든 훈련 활동은 안전 규정 하에 진행됩니다. 위험 감지 시 즉시 보고 바랍니다.</p>
+             <!-- Social Icons Placeholder -->
+             <div class="flex space-x-4 mt-4">
+                <!-- Add social icons here if needed -->
+             </div>
+        </div>
+    </div>
+    <div class="container max-w-7xl mx-auto mt-8 pt-8 border-t border-brand-secondary/30 text-center text-sm text-brand-text-dark">
+        © 2025 광주경찰특공대 훈련본부. All Rights Reserved. (Design Example)
+    </div>
+</footer>
+
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 700, // values from 0 to 3000, with step 50ms
+        once: false, // whether animation should happen only once - while scrolling down
+        offset: 50, // offset (in px) from the original trigger point
+    });
+
+    // Basic smooth scroll for internal links (optional, browser support is good now)
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.addEventListener('click', function (e) {
+    //         e.preventDefault();
+    //         document.querySelector(this.getAttribute('href')).scrollIntoView({
+    //             behavior: 'smooth'
+    //         });
+    //     });
+    // });
+</script>
 
 </body>
 </html>
