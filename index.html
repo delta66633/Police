@@ -66,6 +66,7 @@
         .icon-list li {
              @apply flex items-start mb-3;
         }
+        /* *** FIXED: Ensure SVG inside .icon-list li have consistent styles *** */
         .icon-list svg {
              @apply w-6 h-6 mr-3 text-brand-primary flex-shrink-0 mt-1;
         }
@@ -104,8 +105,8 @@
             <a href="#slide-2" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">개요</a>
             <a href="#slide-5" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">준비</a>
             <a href="#slide-8" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">요소</a>
-            <a href="#slide-10" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">역할</a>
-            <a href="#slide-19" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">안전</a>
+            <!-- <a href="#slide-10" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">역할</a> --> {/* Placeholder, link to appropriate section if added */}
+            <a href="#slide-20" class="text-brand-text-medium hover:text-brand-text-light px-4 transition duration-300">안전</a>
             <a href="#slide-27" class="text-brand-text-medium hover:text-brand-text-light pl-4 transition duration-300">Q&A</a>
         </div>
     </div>
@@ -117,6 +118,7 @@
     <section id="hero" class="flex flex-col items-center justify-center text-center rounded-xl shadow-2xl p-10 mb-16 relative overflow-hidden">
         <div class="z-10 relative">
              <div data-aos="fade-down" data-aos-delay="100" class="mb-6">
+                 <!-- Standard Check Circle Icon -->
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20 text-brand-primary mx-auto">
                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                  </svg>
@@ -141,6 +143,7 @@
     <!-- === Slide 2: Overview === -->
     <section id="slide-2" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
         <h2 class="section-title flex items-center">
+            <!-- Bars 3 Bottom Left Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
             </svg>
@@ -174,8 +177,9 @@
          <div class="absolute inset-0 bg-brand-dark opacity-80 backdrop-blur-sm"></div>
          <div class="relative z-10">
             <h2 class="section-title flex items-center mb-10">
+                 <!-- Document Text Icon -->
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
-                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+                   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                  </svg>
                 상황 설정 및 배경 정보
             </h2>
@@ -184,20 +188,30 @@
                     <h3 class="sub-heading">참고 첩보 (가상 타임라인)</h3>
                     <ul class="space-y-3 text-brand-text-medium icon-list">
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                            <!-- *** FIXED: Added classes to Calendar Icon *** -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-brand-primary flex-shrink-0 mt-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" />
+                            </svg>
                             <span><span class="font-semibold text-brand-primary mr-1">04-16:</span> 선관위 주변 미상 거수자 확인</span>
                         </li>
                         <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                            <!-- *** FIXED: Added classes to Calendar Icon *** -->
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-brand-primary flex-shrink-0 mt-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" />
+                             </svg>
                             <span><span class="font-semibold text-brand-primary mr-1">04-19:</span> 총기/폭발물 무단 반출 의심 신고</span>
                         </li>
                          <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" /></svg>
+                             <!-- *** FIXED: Added classes to Calendar Icon *** -->
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-brand-primary flex-shrink-0 mt-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-3.75h.008v.008H12v-.008Z" />
+                             </svg>
                             <span><span class="font-semibold text-brand-primary mr-1">04-20/23:</span> <strong class="text-brand-danger">폭발 소리/총성 의심</strong> 신고</span>
                         </li>
                         <li class="!mt-4 bg-brand-danger-bg p-4 rounded-md border-l-4 border-brand-danger">
                              <div class="flex items-start">
-                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-brand-danger flex-shrink-0 mt-1"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
+                                 <!-- Exclamation Triangle Icon (Correctly styled via icon-list) -->
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
                                  <div>
                                     <span class="font-semibold text-brand-primary mr-1">04-25 (사건 발생):</span>
                                     <ul class="list-disc list-inside ml-6 mt-1 text-sm space-y-1 text-brand-text-medium">
@@ -232,20 +246,19 @@
         </div>
     </section>
 
-    <!-- ... (Continue converting other sections using similar principles) ... -->
-
     <!-- === Slide 5: Prep === -->
     <section id="slide-5" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
         <h2 class="section-title flex items-center">
+             <!-- *** FIXED: Changed icon to ClipboardDocumentCheck *** -->
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
              </svg>
             훈련 사전 준비 (D-1)
         </h2>
         <div class="grid md:grid-cols-3 gap-8 mt-10">
             <div class="card" data-aos="zoom-in" data-aos-delay="100">
                  <h3 class="sub-heading flex items-center">
+                     <!-- Users Icon (Heroicons Mini) -->
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path d="M10 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM1.49 15.326a.78.78 0 0 1-.358-.442 3 3 0 0 1 4.308-3.516 6.484 6.484 0 0 0-1.905 3.959c-.026.222-.01.445.048.662a1.78 1.78 0 0 1-.62.872A4.496 4.496 0 0 1 1.49 15.326ZM18.51 15.326a4.496 4.496 0 0 0-2.405-1.78 1.78 1.78 0 0 0-.62-.872.99.99 0 0 0 .048-.662 6.484 6.484 0 0 1-1.905-3.96 3 3 0 0 0 4.308 3.516.78.78 0 0 0-.358.442ZM14 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" /></svg>
                     참가자 브리핑
                 </h3>
@@ -257,6 +270,7 @@
             </div>
              <div class="card" data-aos="zoom-in" data-aos-delay="200">
                  <h3 class="sub-heading flex items-center">
+                     <!-- Arrow Right Start On Rectangle Icon (Heroicons Mini) -->
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path fill-rule="evenodd" d="M11.49 3.17a.75.75 0 0 1 1.02 0l5.5 5.5a.75.75 0 0 1 0 1.06l-5.5 5.5a.75.75 0 1 1-1.06-1.06l4.22-4.22H4.75a.75.75 0 0 1 0-1.5h11.94l-4.22-4.22a.75.75 0 0 1-.04-1.02ZM2.75 6.75a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 0-1.5h-3.5Z" clip-rule="evenodd" /></svg>
                     환경 구축
                 </h3>
@@ -267,6 +281,7 @@
             </div>
             <div class="card" data-aos="zoom-in" data-aos-delay="300">
                  <h3 class="sub-heading flex items-center">
+                     <!-- Star Icon (Heroicons Mini) -->
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 mr-2 text-brand-primary"><path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" /></svg>
                     응급 대응 준비
                 </h3>
@@ -281,6 +296,7 @@
     <!-- === Slide 6 & 7: Timeline (Simplified visual) === -->
     <section id="slide-6-7" class="rounded-xl p-8 md:p-12 mb-16" data-aos="fade-up">
         <h2 class="section-title flex items-center mb-10">
+             <!-- Calendar Days Icon -->
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary">
                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
              </svg>
@@ -343,39 +359,80 @@
     <!-- === Slide 8: Key Elements === -->
     <section id="slide-8" class="bg-brand-surface rounded-xl shadow-xl p-8 md:p-12 mb-16" data-aos="fade-up">
         <h2 class="section-title flex items-center">
+            <!-- List Bullet Icon -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-primary"> <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.125 1.125 0 0 1 0 2.25H5.625a1.125 1.125 0 0 1 0-2.25Z" /></svg>
             주요 훈련 요소
         </h2>
+        <!-- *** FIXED: Replaced JS Placeholder with static HTML *** -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {[...Array(6)].map((_, index) => {
-                const titles = ["상황 인식/판단", "통제선 형성", "단계적 대응", "인원 구출", "우발상황 대처", "사후 처리"];
-                const descs = ["우선순위 설정", "확산 차단/분리", "협상→경고→진압", "최소 피해 구출", "IED, 미디어 압박 등", "점거 해산, 증거 확보"];
-                const icons = [
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" /></svg>`,
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l5.25 5.25" /></svg>`,
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>`,
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>`,
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>`,
-                    `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>`
-                 ];
-                 return `
-                    <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                         <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">${icons[index]}</div>
-                         <div>
-                            <h4 class="font-semibold text-lg text-brand-text-light mb-1">${titles[index]}</h4>
-                            <p class="text-sm text-brand-text-medium">${descs[index]}</p>
-                         </div>
-                    </div>
-                `;
-            }).join('')}
+            <!-- Card 1: 상황 인식/판단 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="0">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">상황 인식/판단</h4>
+                    <p class="text-sm text-brand-text-medium">우선순위 설정</p>
+                 </div>
+            </div>
+            <!-- Card 2: 통제선 형성 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="100">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5M15 15l5.25 5.25" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">통제선 형성</h4>
+                    <p class="text-sm text-brand-text-medium">확산 차단/분리</p>
+                 </div>
+            </div>
+            <!-- Card 3: 단계적 대응 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="200">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">단계적 대응</h4>
+                    <p class="text-sm text-brand-text-medium">협상→경고→진압</p>
+                 </div>
+            </div>
+            <!-- Card 4: 인원 구출 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="300">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">인원 구출</h4>
+                    <p class="text-sm text-brand-text-medium">최소 피해 구출</p>
+                 </div>
+            </div>
+            <!-- Card 5: 우발상황 대처 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="400">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">우발상황 대처</h4>
+                    <p class="text-sm text-brand-text-medium">IED, 미디어 압박 등</p>
+                 </div>
+            </div>
+             <!-- Card 6: 사후 처리 -->
+            <div class="card flex items-start space-x-4" data-aos="fade-up" data-aos-delay="500">
+                 <div class="text-brand-primary flex-shrink-0 w-8 h-8 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+                 </div>
+                 <div>
+                    <h4 class="font-semibold text-lg text-brand-text-light mb-1">사후 처리</h4>
+                    <p class="text-sm text-brand-text-medium">점거 해산, 증거 확보</p>
+                 </div>
+            </div>
         </div>
     </section>
 
-    <!-- ... (Continue converting OPFOR, WHITE CELL, SAFETY sections) ... -->
-    <!-- Example for Safety Section -->
+    <!-- === Slide 20: Safety - STOP CALL === -->
     <section id="slide-20" class="bg-brand-danger-bg rounded-xl shadow-xl p-8 md:p-12 mb-16 border-t-4 border-brand-danger" data-aos="fade-up">
         <h2 class="section-title !text-brand-danger !border-brand-danger flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
+            <!-- *** FIXED: Explicitly added text-brand-danger class *** -->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-danger"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.008v.008H12v-.008Z" /></svg>
             안전 수칙: <span class="ml-2">STOP CALL (즉시 중단)</span>
         </h2>
         <div class="text-center p-6 bg-brand-danger/30 border border-brand-danger rounded-lg shadow-inner my-8" data-aos="zoom-in">
@@ -407,7 +464,8 @@
     <!-- Slide 21: SAFETY -->
      <section id="slide-21" class="bg-brand-safe-bg rounded-xl shadow-xl p-8 md:p-12 mb-16 border-t-4 border-brand-safe" data-aos="fade-up">
          <h2 class="section-title !text-brand-safe !border-brand-safe flex items-center">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+             <!-- *** FIXED: Explicitly added text-brand-safe class *** -->
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 mr-3 text-brand-safe"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
             안전 수칙: <span class="ml-2">SAFETY (주의 환기)</span>
         </h2>
         <div class="text-center p-6 bg-brand-safe/30 border border-brand-safe rounded-lg shadow-inner my-8" data-aos="zoom-in">
@@ -441,6 +499,7 @@
          <div class="absolute inset-0 bg-brand-dark opacity-80 backdrop-blur-sm"></div>
          <div class="relative z-10">
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">질의응답 및 훈련 준비 완료</h2>
+             <!-- Chat Bubble Left Ellipsis Icon -->
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-brand-primary mx-auto mb-6" data-aos="zoom-in">
                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
              </svg>
@@ -463,8 +522,8 @@
             <ul class="space-y-2 text-sm">
                 <li><a href="#slide-2" class="hover:text-brand-primary transition duration-300">훈련 개요</a></li>
                 <li><a href="#slide-8" class="hover:text-brand-primary transition duration-300">주요 요소</a></li>
-                <li><a href="#slide-14" class="hover:text-brand-primary transition duration-300">OPFOR/White Cell</a></li>
-                <li><a href="#slide-19" class="hover:text-brand-primary transition duration-300">안전 수칙</a></li>
+                <!-- <li><a href="#slide-14" class="hover:text-brand-primary transition duration-300">OPFOR/White Cell</a></li> --> {/* Placeholder link */}
+                <li><a href="#slide-20" class="hover:text-brand-primary transition duration-300">안전 수칙</a></li>
             </ul>
         </div>
         <div>
@@ -495,13 +554,17 @@
         offset: 50, // offset (in px) from the original trigger point
     });
 
-    // Basic smooth scroll for internal links (optional, browser support is good now)
+    // Browser's native smooth scrolling via CSS `scroll-smooth` class on <html> is generally preferred now.
+    // The JS fallback below can be uncommented if needed for older browser support.
     // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     //     anchor.addEventListener('click', function (e) {
     //         e.preventDefault();
-    //         document.querySelector(this.getAttribute('href')).scrollIntoView({
-    //             behavior: 'smooth'
-    //         });
+    //         const targetElement = document.querySelector(this.getAttribute('href'));
+    //         if(targetElement) {
+    //             targetElement.scrollIntoView({
+    //                 behavior: 'smooth'
+    //             });
+    //         }
     //     });
     // });
 </script>
